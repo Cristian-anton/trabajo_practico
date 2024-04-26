@@ -1,0 +1,650 @@
+/*variable global*/
+:root{   
+    --color-primario:#007bff; /*color de fondo*/
+    --font-size-base:22px;
+    font-size: 20px;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+@keyframes tilt-n-move-shaking {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(5px, 5px) rotate(5deg); }
+    50% { transform: translate(0, 0) rotate(0eg); }
+    75% { transform: translate(-5px, 5px) rotate(-5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgb(23, 23, 23);
+}
+   
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--color-primario);
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background:var(--color-primario);
+}
+body{
+    background-color: #181419;
+    color:white; 
+
+}
+
+/*Desktop*/
+.header{
+    background-color:var(--color-primario);
+    color:#ffffff;
+    height: 11vh;
+    position:sticky;
+    top: 0;
+    z-index:10;
+    .navegacion{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left:20px;
+        margin-right: 20px;
+        padding: 1.5rem 0;
+        .anclaLogo{
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            /*animacion hover*/
+            &:hover{
+                animation: tilt-n-move-shaking 0.25s infinite;
+            }
+        }
+        .listaNav{
+            list-style: none;
+            display: flex;
+            .listaItem{
+                margin-right:20px;
+                .linkNav{
+                    text-decoration: none;
+                    color:#ffffff;
+                    font-weight: 700;
+                    font-size: 1.1rem;
+                    padding: 0.5rem 1rem;
+                    /* Agregar efecto de botón presionado */
+                    transition: transform 0.3s, box-shadow 0.3s;
+                    &:hover {
+                        transform: scale(0.95);
+                        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+                        border-radius: 5px;
+                    }
+                }
+                
+            }
+           
+        }
+        .contenedorSearch{
+            min-width: max-content;
+            align-items: start;
+            justify-content: flex-start;
+        }
+        .ContenedorSearch input[type=text] {
+            padding: 6px;
+            margin-top: 8px;
+            font-size: 17px;
+            border: none;
+            min-width: max-content;
+            
+        
+        }
+          
+        .ContenedorSearch button {
+            float: right;
+            padding: 6px 10px;
+            margin-top: 8px;
+            margin-right: 16px;
+            background: #ddd;
+            font-size: 17px;
+            border: none;
+            cursor: pointer;
+          }
+          
+          .ContenedorSearch button:hover {
+            background: #ccc;
+          }
+    }
+   
+}
+/*ESTILOS PARA HEADER MOBILE Y TABLET*/
+
+@media (max-width: 768px) {
+    .header{
+        height: initial;
+        .navegacion{
+            margin-left:10px;
+            margin-right: 10px;
+            flex-direction: column;
+            row-gap: 20px;
+            .anclaLogo{
+                font-size: 1.rem;
+                font-weight:700;
+                
+            }
+            .listaNav{
+               
+                padding:initial;
+                .listaItem{
+                    .linkNav{
+                        font-weight: 400;
+                        margin-right: initial;
+                        font-size: .8rem;
+                        padding: 0.2rem;
+                        
+                    }
+                  
+                }
+            }
+            .contenedorSearch {
+                float: none;
+              }
+              .ContenedorSearch a, .ContenedorSearch input[type=text], .ContenedorSearch button {
+                float: none;
+                display: block;
+                text-align: left;
+                width: 100%;
+                margin: 0;
+                padding: 14px;
+              }
+              .ContenedorSearch input[type=text] {
+                border: 1px solid #ccc;  
+              }
+            }
+        }
+    }
+
+
+/*ESTILOS PARA MAIN ESCRITORIO*/
+.main{
+    .sectionPrincipal{
+        color:white;
+        background-size:contain;
+        background-position: center;
+        height: 90vh;
+        display: flex;
+        text-align: center;
+        .tituloPrincipal{
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .subtituloPrincipal{
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+    }
+    
+
+}
+    .documentales{
+        width:80%;
+        margin: 0 auto;
+        text-align: center;
+        margin-top: 60px;
+        margin-bottom:60px;
+        .tituloSection{
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        .listaDocumentales {
+            overflow-x: scroll;
+            overflow-y: hidden;
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 0px 0px 40px 0px;
+            .peliculaItem{
+                border-radius: 25px;
+                width: 170px;
+                min-width: 170px;
+                font-size: 20px;
+                cursor: pointer;
+                margin-left: 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+               
+                .imgPeliculas{
+                    border-radius: 5%;
+                    width: 95%;
+                    height: 95%;
+                    object-fit: cover;
+                }
+                
+            }
+           
+        
+        }
+    }
+   
+
+
+@media (max-width: 768px) {
+    .main{
+        .sectionPrincipal{
+            height: 60vh;
+            .tituloPrincipal{
+                font-size: 2rem;
+            }
+            .subtituloPrincipal{
+                font-size: 1.2rem;
+            }
+            
+        }
+        
+        }
+        .documentales{
+            .tituloSection{
+                font-size: 2rem;
+            }
+            .listaDocumentales{
+                .peliculaItem{
+                    width: 150px;
+                    min-width: 150px;
+                    font-size: 15px;
+                    margin-left: 20px;
+                    .imgPeliculas{
+                        width: 90%;
+                        height: 90%;
+                    }
+                }
+            }
+        }
+    }
+
+
+/*ESTILOS ESCRITORIO FOOTER*/
+.footer{
+    background-color: var(--color-primario);
+    color:#ffffff;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .listaNav{
+        list-style: none;
+        display: flex;
+        align-items: center;
+        .listaItem{
+            margin-left:20px;
+            .linkNav{
+                text-decoration: none;
+                color:#ffffff;
+                font-weight: 700;
+                font-size: 1.2rem;
+            }
+            .administradorPeliculas{
+                background-color: #181419;
+                color: white;
+                padding: 0.5rem 1rem;
+                border-radius: 5px;
+            }
+        }
+    }
+    
+    .flechaArriba{
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        color: white;
+        cursor: pointer;
+    }
+}
+/*ESTILOS FOOTER CELULAR Y TABLET CHICA*/
+@media (max-width: 768px) {
+    .footer{
+        height: initial;
+        padding-top:15px;
+        padding-bottom: 20px;
+        .listaNav{
+            flex-direction: column;
+           
+            row-gap: 15px;
+            .listaItem{
+                
+                .linkNav{
+                    font-size: 1rem;
+                }
+                .administradorPeliculas{
+                    padding: 0.5rem 0.8rem;
+                }
+            }
+        }
+    }
+}
+
+.carousel-item{
+    width: 100vw;
+    max-height: 85vh;
+    
+}
+
+.container {
+    text-align: center;
+    color: white;
+    margin-top: 5%;
+  }
+
+/*ESTILOS ESCRITORIO PARA PAGINA Registrarse */
+.bodyRegistrarse{
+    height: 100vh;
+    background:linear-gradient(to right top, #24242473,#24242473),url("../assets/img/bg-register.jpg");
+    background-size: cover;
+    background-position: center;
+    .headerRegistrarse{
+        color:#ffffff;
+        height: 8vh;
+        padding:30px;
+        .anclaLogo{
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.2rem;
+             /*animacion hover*/
+            &:hover{
+                animation: tilt-n-move-shaking 0.25s infinite;
+            }
+        }
+    }
+    .main{
+         /*seccion de registrarse.html*/
+        .seccionRegistrarse{
+            background-color:rgb(42, 42, 42);
+            width: 30%;
+            margin:0 auto;
+            border-radius: 5px;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            font-size:1.2rem;
+            .tituloRegistrarse{
+                font-size: 2.5rem;
+                font-weight: 700;
+                margin-bottom: 20px;
+            }
+            /*seleccionar todos los input menos el checkbox*/
+            form{
+                width: 100%;
+                padding:40px;
+                input:not(.check,.boton),select{
+                    width: 100%;
+                    margin-bottom: 20px;
+                    height: 40px;
+                    padding: 0px 20px;
+                    font-size: 1.2rem;
+                    border-radius: 20px;
+                    border: 2px solid --color-primario;
+                    background-color: #333333;
+                    outline: none;
+                    color:white;
+                }
+                .terminos{
+                    font-size: 0.8rem;
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 20px;
+                    .textoCheck{
+                        margin-left: 10px;
+                    }
+                }
+                .boton{
+                    width: 87%;
+                    box-sizing: content-box;
+                    background-color: var(--color-primario);
+                    border: 2px solid --color-primario;
+                    color: #ffffff;
+                    padding: 1rem 1rem;
+                    border-radius: 5px;
+                    font-size: 1rem;
+                    font-weight: 500;
+                   
+                }
+                .ayuda{
+                    margin-top:40px;
+                    font-size: 1rem;
+                    text-decoration: none;
+                    color: #787878;
+                    font-weight:400;
+                   
+                }
+            }
+           
+        }
+   
+    }
+}
+
+/*media querys para mobile PAGINA registrarse*/
+@media (max-width: 1200px) {
+    .bodyRegistrarse{
+        .headerRegistrarse{
+            padding:20px;
+            .anclaLogo{
+                font-size: 1rem;
+            }
+        }
+        .main{
+            .seccionRegistrarse{
+                width: 95%;
+                padding: 10px 10px;
+                .tituloRegistrarse{
+                    font-size: 2rem;
+                }
+               form{
+                width: 100%;
+                text-align: center;
+               
+                input:not(.check,.boton),select{
+                    width: 80%;
+                    height: 35px;
+                    font-size: 1rem;
+                }
+                .terminos{
+                    width: 80%;
+                    margin:0 auto;
+                    font-size: 0.7rem;
+                }
+                .boton{
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    width: 70%;
+                    padding: 0.8rem 0.8rem;
+                    font-size: 0.8rem;
+                }
+                .ayuda{
+                    text-align: left;
+                    font-size: 0.8rem;
+                }
+               }
+               
+            }
+        }
+    }
+
+}
+
+/*ESTILOS ESCRITORIO Detalle*/
+.mainDetalle{
+    
+    .detalle{
+        padding-top:50px;
+        background:linear-gradient(to right top, #6d6969a7, #6d6969a7),url("../assets/img/mario-bg.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 70vh;
+        .contenedorDetalle{
+            width:75%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            column-gap: 60px;
+            img{
+              border-radius: 20px;
+              height: 50vh;
+            }
+            .textoDetalle{
+                h1{
+                    font-size: 2.2rem;
+                    font-weight: 700;
+                }
+                h2{
+                    margin-top:20px;
+                }
+                .contenedorCreditos{
+                    margin-top:20px;
+                    display: flex;
+                    justify-content:space-between;
+                }
+            }
+        }
+        
+        
+       
+    }
+    .trailer{
+        padding-top:150px;
+        padding-bottom: 100px;
+        width:75%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 70px;
+        .contenedorInfo{
+            .redes{
+                margin-bottom: 20px;
+                ul{
+                    list-style: none;
+                    display: flex;
+                    column-gap: 20px;
+                    li{
+                        a{
+                            text-decoration: none;
+                            color: #ffffff;
+                            font-size: 2rem;
+                            margin-right: 50px;
+                        }
+                    }
+                  
+                }
+            }
+            .info{
+                table{
+                    width: 100%;
+                    tr{
+                        td{
+                            font-size: 1.2rem;
+                            padding: 10px 0px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+/*ESTILOS MOBILE Y TABLETS DETALLE*/
+@media screen and (max-width:1200px){
+    .mainDetalle{
+        .detalle{
+            height: initial;
+            .contenedorDetalle{
+                flex-direction: column;
+                row-gap: 20px;
+                img{
+                    width: 100%;
+                    height: 300px;
+                }
+                .textoDetalle{
+                    h1{
+                        font-size: 1.5rem;
+                    }
+                    h2{
+                        font-size: 1rem;
+                    }
+                    .contenedorCreditos{
+                        flex-direction: column;
+                        row-gap: 10px;
+                    }
+                }
+            }
+        }
+        .trailer{
+            width:95%;
+            padding-top:50px;
+            padding-bottom: 50px;
+            flex-direction: column;
+            row-gap: 20px;
+            .contenedorTrailer{
+                width: 100%;
+                h2{
+                    margin-bottom: 20px;
+                }
+                iframe{
+                    width: 100%;
+                    height: 300px;
+                
+                }
+            }
+            .contenedorInfo{
+                width: 100%;
+                .redes{
+                    width: 100% ;
+                    ul{
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                       
+                        li{
+                            a{
+                                font-size: 2rem;
+                                margin-right: 20px;
+                            }
+                        }
+                    }
+                }
+                .info{
+                    table{
+                        tr{
+                            td{
+                                font-size: 1rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+hr{
+    border: 1px solid --color-primario;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
