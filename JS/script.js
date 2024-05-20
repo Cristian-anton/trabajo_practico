@@ -28,7 +28,7 @@ const validacionRegistro = ()=>{
         errores.textContent =`La contraseña debe contener numero y letras`;
         return;
     }
-
+    alert("EL formulario se envio con exito");
     });
 }
 
