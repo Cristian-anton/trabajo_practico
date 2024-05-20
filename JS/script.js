@@ -1,7 +1,7 @@
 const validacionRegistro = ()=>{
     document.getElementById("formularioRegistro").addEventListener("submit", function(event){
         event.preventDefault();
-        var inputNombre = document.querySelector("formInputNombre").value;
+        var inputNombre = document.querySelector("#formInputNombre").value;
         var inputApellido = document.querySelector('#formInputApellido').value;
         var inputMail = document.querySelector('#formInputMail').value;
         var inputPass = document.querySelector('#formInputPass').value;
@@ -33,8 +33,7 @@ const validacionRegistro = ()=>{
 }
 
 const validacionLogin = ()=>{
-    // document.getElementById("modalLogin").addEventListener("submit", function(event){
-    //     event.preventDefault();
+
         var inputMail = document.getElementById("floatingInput").value;
         var inputPass = document.getElementById("floatingPassword").value;
         var errores = document.getElementById('errores');
@@ -54,5 +53,5 @@ const validacionLogin = ()=>{
            errores.textContent =`Debe completar la contraseña`;
            return;
        }
-    // })
+
 }
