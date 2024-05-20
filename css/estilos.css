@@ -429,6 +429,11 @@ body{
                     font-weight:400;
                    
                 }
+                .errores{
+                    color : red;
+                    font-size: .75rem;
+                    
+                }   
             }
            
         }

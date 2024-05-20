@@ -40,6 +40,7 @@
                     </div>
                 </li>
                 <li class="listaItem"><a class="btn btn-primary" role="button" href="./pages/registrarse.html">Registrarse</a></li>
+                <li class="listaItem"><a class="btn btn-primary" role="button" href="#">Conexion API</a></li>
                 <li class="listaItem"><button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalLogin">Iniciar Sesión</button></li>
             </ul>
         </nav>
@@ -65,8 +66,9 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary">Adelante</button>
+              <button type="button" class="btn btn-primary" onclick="validacionLogin()">Adelante</button>       
             </div>
+            <span id="errores" class="errores"></span>
           </div>
         </div>
       </div>
@@ -312,6 +314,7 @@
         </a>
     </footer>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="/JS/script.js"></script>
     <script>
     AOS.init();
     </script>

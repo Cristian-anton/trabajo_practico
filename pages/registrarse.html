@@ -20,19 +20,19 @@
     </header>
     <main  id="main" class="main">
       <section  data-aos="zoom-in"  data-aos-duration="1000" class="seccionRegistrarse">
-        <form  action="" method="post">
+        <form  action="" method="post" id ="formularioRegistro">
             <h2 class="tituloRegistrarse">Registro</h2>
             <div>
-                <input type="text" placeholder="Nombre" required id="nombre" name="nombre">
+                <input type="text" id = "formInputNombre" placeholder="Nombre" name="nombre">
             </div>
             <div>
-                <input type="text" placeholder="Apellido" required id="apellido" name="apellido">
+                <input type="text"  id = "formInputApellido" placeholder="Apellido"  name="apellido">
             </div>
             <div>
-                <input type="email" placeholder="Email" required id="email" name="email">
+                <input type="email" id = "formInputMail" placeholder="Email" required id="email" name="email">
             </div>
             <div>
-                <input type="password" placeholder="Contraseña" required id="password" name="password">
+                <input type="password" id = "formInputPass" placeholder="Contraseña" required id="password" name="password">
             </div>
             <div>
                 <input type="date" placeholder="Fecha de Nacimiento (dd/mm/aaaa)" required id="fechaNacimiento" name="fechaNacimiento">
@@ -54,12 +54,12 @@
             </div>
             <div class="terminos" >
                 <input class="check" type="checkbox" id="terminos">
-                <label class="textoCheck" for="terminos">Acepto términos y condiciones</label>
+                <label class="textoCheck" for="terminos"required id="terminos">Acepto términos y condiciones</label>
             </div>
             <div>
-                <input  class="boton" type="submit" value="Registrarse">
+                <input  class="boton" type="submit" value="Registrarse" onclick="validacionRegistro()">
             </div>
-           
+           <span id="errores" class = "errores"></span>
             <div > 
                 <a class="ayuda" href="#">Necesitas ayuda?</a>
             </div>
@@ -69,6 +69,8 @@
     </main>
     <!--JS AOS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="/JS/script.js"></script>
+    
     <script>
     AOS.init();
     </script>
