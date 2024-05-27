@@ -95,7 +95,7 @@ body{
             align-items: start;
             justify-content: flex-start;
         }
-        .ContenedorSearch input[type=text] {
+        .contenedorSearch input[type=text] {
             padding: 6px;
             margin-top: 8px;
             font-size: 17px;
@@ -105,7 +105,7 @@ body{
         
         }
           
-        .ContenedorSearch button {
+        .contenedorSearch button {
             float: right;
             padding: 6px 10px;
             margin-top: 8px;
@@ -116,7 +116,7 @@ body{
             cursor: pointer;
           }
           
-          .ContenedorSearch button:hover {
+          .contenedorSearch button:hover {
             background: #ccc;
           }
     }
@@ -235,6 +235,7 @@ body{
         
         }
     }
+    
    
 
 
@@ -269,7 +270,9 @@ body{
                 }
             }
         }
+    
     }
+
 
 
 /*ESTILOS ESCRITORIO FOOTER*/
@@ -652,4 +655,43 @@ hr{
     margin-top: 40px;
     margin-bottom: 80px;
 }
+.search-form{
 
+    color: black;
+    align-items: center;
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+#search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+
+}
+input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+#movie-details {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.movie-poster {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.movie-info {
+    text-align: left;
+    margin-top: 20px;
+}
