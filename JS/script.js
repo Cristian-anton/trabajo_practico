@@ -38,6 +38,10 @@ const validacionLogin = ()=>{
         var inputPass = document.getElementById("floatingPassword").value;
         var errores = document.getElementById('errores');
         var success = document.getElementById('success');
+        var modal = document.getElementById("modalLogin");
+        var login = false;
+        //traigo el elemento donde crear el bottom
+        const successButton = document.getElementById("successBtn");
         var regexMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         errores.textContent = "";
@@ -56,5 +60,15 @@ const validacionLogin = ()=>{
        }
        errores.textContent = "";
        success.textContent = "Ingresado con exito, bienvenido";
+       login = true;
+       successButton.innerText = "Siguiente";
+       //intento de cerrar el modal convirtiendo el boton
+       if (login == true){
+            //const dataDismiss = document.createAttribute('data-dismiss');
+            //dataDismiss.nodeValue = 'modal';
+            //successButton.setAttributeNode(dataDismiss);
+            successButton.addEventListener("click", function(){modal.hide()});
+       }
+       
 
 }

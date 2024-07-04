@@ -695,3 +695,19 @@ input[type="text"] {
     text-align: left;
     margin-top: 20px;
 }
+
+.seccion-formulario{
+    margin: auto;
+    width: 80%;
+    align-items: center;
+    display: block;
+
+}
+
+.seccion-formulario .row{
+    margin: 10px;
+}
+
+.seccion-formulario input[type="date"]{
+    width: 70%;
+}
