@@ -1,16 +1,73 @@
 document.addEventListener('DOMContentLoaded',function(){
+    const form=document.getElementById('itemForm');
     const itemsTableBody = this.getElementById('itemsTableBody');
 
+    form.addEventListener('submit', function(event){
+        
+        event.preventDefault();
+
+        const formData = new formData(form);
+        const itemId = formData.get('id');
+
+        
+        //construir objeto con los datos del formulario
+
+        const data ={
+            id:formData.getAnimations('id'),
+            titulo:formData.getAnimations('id'),
+            año:formData.getAnimations('id'),
+            genero:formData.getAnimations('id'),
+            director:formData.getAnimations('id'),
+            reparto:formData.getAnimations('id'),
+            detalles:formData.getAnimations('id'),
+            rating:formData.getAnimations('id'),
+            duracion:formData.getAnimations('id'),
+        };
+        if(itemId){
+            updateItem(data);
+        }else{
+            createItem(data);
+        }
+    });
+    
+    const createItem= ((data)=>{
+        fetch('http://localhost/trabajo_practico/api/api.php',
+            {
+                method:'POST',
+                headers: {
+                    'content-type':'application/json',
+                },
+                body: JSON.stringify(data)
+            }
+        )
+        .then(response =>
+        {
+            if(!response.ok){
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(result=>{
+            consule.log('success: ',result);
+        })
+        .catch(error=>{
+            console.error('Error:', error);
+        });
+    })
+    
+    
+    
     const loadItems = (()=>{
 
         fetch('http://localhost/trabajo_practico/api/api.php')
-        .then(response=>response.json())
-        .then(data=>{
-            itemsTableBody.innerHTML = "";
-            if(data.peliculas){
-                data.peliculas.forEach(pelicula => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
+        .then(response => response.json())
+    .then(data => {
+        itemsTableBody.innerHTML = '';
+        if (data.peliculas) 
+            {
+            data.peliculas.forEach(pelicula => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
                     <td>${pelicula.id}</td>
                     <td>${pelicula.titulo}</td>
                     <td>${pelicula.año}</td>
@@ -46,7 +103,9 @@ document.addEventListener('DOMContentLoaded',function(){
         })
         .catch(error => console.error('Error:', error));
         
-    });
+    })
+
+
 
     const deleteItem = ((id)=>{
         fetch(`http://localhost/trabajo_practico/api/api.php?id=${id}`,
@@ -64,6 +123,36 @@ document.addEventListener('DOMContentLoaded',function(){
             loadItems();
 
     })
+
+
+    const updateItems = ((data)=>{
+        fetch(`http://localhost/trabajo_practico/api/api.php?id?${data.id}`,
+            {
+                method: 'PUT',
+                headers:{
+                    'content-type':'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+        .then(response=>
+        {
+            if(response.ok){
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(result=>{
+            console.log('success:', result);
+            loadItems();
+            form.reset();
+        })
+        .catch(error => 
+            {
+            console.error('Error:', error);
+        });
+            
+    })
+
 
     window.editItem=function(id, titulo, año, genero, director, reparto, detalles, rating, duracion){
         document.getElementById('id').value = id;
