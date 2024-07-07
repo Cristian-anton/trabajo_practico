@@ -25,90 +25,70 @@
         </header>
     <main id="main" clas="main">
         <!-- formnulario  -->
-         <section class="seccion-formulario">
+         <section class="seccion-formulario" data-aos="zoom-in"  data-aos-duration="1000">
             <form id="itemForm" class="mb-4">
                 <div class="row">
                     <div class="col">
-                        <input type="hidden" id="id" class="id">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
+                        <input type="hidden" id="id" name="id">
+    
                         <div class="form-group">
-                          <label for="titulo">Titulo</label>
-                          <input type="text" name="titulo" id="titulo" class="form-control" required>
+                            <label for="name">Titulo:</label>
+                            <input type="text" class="form-control" id="titulo" name="titulo" required>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
+    
                         <div class="form-group">
-                          <label for="año">Año</label>
-                          <input type="date" name="año" id="año" class="form-control" required>
+                            <label for="description">Año</label>
+                            <input type="date" class="form-control" id="año" name="año" required>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
+    
                         <div class="form-group">
-                          <label for="generp">Genero</label>
-                          <input type="text" name="genero" id="genero" class="form-control" required>
+                            <label for="name">Genero:</label>
+                            <input type="text" class="form-control" id="genero" name="genero" required>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
+
                         <div class="form-group">
-                          <label for="director">Director</label>
-                          <input type="text" name="director" id="director" class="form-control" required>
+                            <label for="name">Director:</label>
+                            <input type="text" class="form-control" id="director" name="director" required>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
+
                         <div class="form-group">
-                          <label for="reparto">Reparto</label>
-                          <input type="text" name="reparto" id="reparto" class="form-control" required>
+                            <label for="name">Reparto:</label>
+                            <input type="text" class="form-control" id="reparto" name="reparto" required>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
+
+                            
                         <div class="form-group">
-                          <label for="detalles">Detalles</label>
-                          <input type="text" name="detalles" id="detalles" class="form-control" required>
+                            <label for="name">detalles:</label>
+                            <input type="text" class="form-control" id="detalles" name="detalles" required>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
+
+                            
                         <div class="form-group">
-                          <label for="rating">Rating</label>
-                          <input type="text" name="rating" id="rating" class="form-control" required>
+                            <label for="name">Rating:</label>
+                            <input type="text" class="form-control" id="rating" name="rating" required>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
+    
                         <div class="form-group">
-                          <label for="duracion">Duracion</label>
-                          <input type="text" name="duracion" id="duracion" class="form-control" required>
+                            <label for="name">Duracion:</label>
+                            <input type="text" class="form-control" id="duracion" name="duracion" required>
                         </div>
+
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
+    
+                    <div class="col" >
                         <div class="form-group">
-                          <label for="imagen">Imagen</label>
-                          <input type="file" name="imagen" id="imagen" class="form-control">
-                        </div>
+                            <label for="name">Imagen:</label>
+                            <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*">
+                        </div>                   
                     </div>
-                </div>
+                </div>          
+    
+                
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </form>
          </section>
-         <section class="seccionFormularioTabla">
-            <h2>Listado de pelicula</h2>
+         <section class="sectionFormularioTabla">
+            <h2>Peliculas</h2>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -139,9 +119,6 @@
                 <li class="listaItem"><a class="linkNav" href="">Ayuda</a></li>
             </ul>
         </nav>
-        <a href="#main" class="flechaArriba">
-            <img src="../assets/img/flecha-hacia-arriba.png" alt="ir arriba flecha">
-        </a>
     </footer>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>

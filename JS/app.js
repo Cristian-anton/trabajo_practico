@@ -1,30 +1,31 @@
-document.addEventListener('DOMContentLoaded',function(){
-    const form=document.getElementById('itemForm');
-    const itemsTableBody = this.getElementById('itemsTableBody');
+document.addEventListener('DOMContentLoaded',function()
+{
+const form=document.getElementById('itemForm');
+const itemsTableBody = document.getElementById('itemsTableBody');
 
     form.addEventListener('submit', function(event){
         
         event.preventDefault();
 
-        const formData = new formData(form);
+        const formData = new FormData(form);
         const itemId = formData.get('id');
 
         
         //construir objeto con los datos del formulario
 
         const data ={
-            id:formData.getAnimations('id'),
-            titulo:formData.getAnimations('id'),
-            año:formData.getAnimations('id'),
-            genero:formData.getAnimations('id'),
-            director:formData.getAnimations('id'),
-            reparto:formData.getAnimations('id'),
-            detalles:formData.getAnimations('id'),
-            rating:formData.getAnimations('id'),
-            duracion:formData.getAnimations('id'),
+            id: formData.get('id'),
+            titulo: formData.get('titulo'),
+            año: formData.get('año'),
+            genero: formData.get('genero'),
+            director: formData.get('director'),
+            reparto: formData.get('reparto'),
+            detalles: formData.get('detalles'),
+            rating: formData.get('rating'),
+            duracion: formData.get('duracion')
         };
         if(itemId){
-            updateItem(data);
+            updateItems(data);
         }else{
             createItem(data);
         }
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded',function(){
             {
                 method:'POST',
                 headers: {
-                    'content-type':'application/json',
+                    'Content-type':'application/json',
                 },
                 body: JSON.stringify(data)
             }
@@ -48,10 +49,14 @@ document.addEventListener('DOMContentLoaded',function(){
             return response.json();
         })
         .then(result=>{
-            consule.log('success: ',result);
+            consule.log('success:',result);
+
+            loadItems();
+            form.reset();
         })
         .catch(error=>{
             console.error('Error:', error);
+            alert('Error al ingresar el item');
         });
     })
     
@@ -61,47 +66,47 @@ document.addEventListener('DOMContentLoaded',function(){
 
         fetch('http://localhost/trabajo_practico/api/api.php')
         .then(response => response.json())
-    .then(data => {
-        itemsTableBody.innerHTML = '';
-        if (data.peliculas) 
-            {
-            data.peliculas.forEach(pelicula => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${pelicula.id}</td>
-                    <td>${pelicula.titulo}</td>
-                    <td>${pelicula.año}</td>
-                    <td>${pelicula.genero}</td>
-                    <td>${pelicula.director}</td>
-                    <td>${pelicula.reparto}</td>
-                    <td>${pelicula.detalles}</td>
-                    <td>${pelicula.rating}</td>
-                    <td>${pelicula.duracion}</td>
-                    <td>
-                        <button class="btn btn-danger" onclick="deleteItem(${pelicula.id})">Eliminar</button>
-                    </td>
-                    <td>
-                        <buttonn class="btn btn-success" onclick="editItem(
-                        ${pelicula.id},
-                        '${pelicula.titulo}',
-                        '${pelicula.año}',
-                        '${pelicula.genero},
-                        '${pelicula.director}',
-                        '${pelicula.reparto}',
-                        '${pelicula.detalles}',
-                        '${pelicula.rating}',
-                        '${pelicula.duracion}')">Editar</button>
-                    </td>
-                    `;
-                    itemsTableBody.appendChild(row);
-                    
-                });
-            }
-            else{
-                console.error('No se encontraron peliculas');
-            }
-        })
-        .catch(error => console.error('Error:', error));
+        .then(data => {
+            itemsTableBody.innerHTML = '';
+            if (data.peliculas) 
+                {
+                data.peliculas.forEach(pelicula => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${pelicula.id}</td>
+                        <td>${pelicula.titulo}</td>
+                        <td>${pelicula.año}</td>
+                        <td>${pelicula.genero}</td>
+                        <td>${pelicula.director}</td>
+                        <td>${pelicula.reparto}</td>
+                        <td>${pelicula.detalles}</td>
+                        <td>${pelicula.rating}</td>
+                        <td>${pelicula.duracion}</td>
+                        <td>
+                            <button class="btn btn-danger" onclick="deleteItem(${pelicula.id})">Eliminar</button>
+                        </td>
+                        <td>
+                            <buttonn class="btn btn-success" onclick="editItem(
+                            ${pelicula.id},
+                            '${pelicula.titulo}',
+                            '${pelicula.año}',
+                            '${pelicula.genero},
+                            '${pelicula.director}',
+                            '${pelicula.reparto}',
+                            '${pelicula.detalles}',
+                            '${pelicula.rating}',
+                            '${pelicula.duracion}')">Editar</button>
+                        </td>
+                        `;
+                        itemsTableBody.appendChild(row);
+                    });
+                } 
+                else 
+                {
+                    console.error('No se encontraron películas');
+                }
+            })
+            .catch(error => console.error('Error:', error));
         
     })
 
@@ -126,29 +131,30 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
     const updateItems = ((data)=>{
-        fetch(`http://localhost/trabajo_practico/api/api.php?id?${data.id}`,
+        fetch(`http://localhost/trabajo_practico/api/api.php?id=${data.id}`,
             {
                 method: 'PUT',
                 headers:{
-                    'content-type':'application/json',
+                    'Content-type':'application/json',
                 },
                 body: JSON.stringify(data)
             })
         .then(response=>
         {
-            if(response.ok){
+            if(!response.ok){
                 throw new Error('Network response was not ok');
             }
             return response.json();
         })
         .then(result=>{
-            console.log('success:', result);
+            console.log('Success:', result);
             loadItems();
             form.reset();
         })
         .catch(error => 
             {
             console.error('Error:', error);
+            alert('Error al actualizar el item');
         });
             
     })
@@ -165,11 +171,9 @@ document.addEventListener('DOMContentLoaded',function(){
         document.getElementById('rating').value = rating;
         document.getElementById('duracion').value = duracion;
 
-    }
+    };
 
     window.deleteItem=deleteItem;
     loadItems();
 
-
-
-})
+});

@@ -43,7 +43,7 @@ function handleGet($conn){
     else{
         $stmt = $conn->query("SELECT * FROM peliculas");
         $peliculas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $peliculaObjs = array_map(fn($pelicula)=>Peliculas::fromArray($pelicula)->toArray(), $peliculas);
+        $peliculaObjs = array_map(fn($pelicula) => Peliculas::fromArray($pelicula)->toArray(), $peliculas);
         echo json_encode(['$peliculas'=>$peliculaObjs]);
 
     }
@@ -77,7 +77,7 @@ function handlePost($conn){
             $pelicula->reparto,
             $pelicula->detalles,
             $pelicula->rating,
-            $pelicula->duracion,
+            $pelicula->duracion
         ]);
         echo json_encode(['message'=>'Pelicula ingresada correctamente']);
 
