@@ -86,7 +86,7 @@ const itemsTableBody = document.getElementById('itemsTableBody');
                             <button class="btn btn-danger" onclick="deleteItem(${pelicula.id})">Eliminar</button>
                         </td>
                         <td>
-                            <buttonn class="btn btn-success" onclick="editItem(
+                            <button class="btn btn-success" onclick="editItem(
                             ${pelicula.id},
                             '${pelicula.titulo}',
                             '${pelicula.año}',
