@@ -44,7 +44,7 @@ function handleGet($conn){
         $stmt = $conn->query("SELECT * FROM peliculas");
         $peliculas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $peliculaObjs = array_map(fn($pelicula) => Peliculas::fromArray($pelicula)->toArray(), $peliculas);
-        echo json_encode(['$peliculas'=>$peliculaObjs]);
+        echo json_encode(['peliculas' => $peliculaObjs]);
 
     }
 }
@@ -133,7 +133,7 @@ function handlePut($conn){
         }
 
         if(!empty($fields)){
-            $params=$id;
+            $params[]=$id;
             $stmt = $conn->prepare("UPDATE peliculas SET ".implode(',',$fields)."WHERE id = ?");
             $stmt->execute($params);
             echo json_encode(['message'=>'Pelicula actualizada con exito']);

@@ -36,7 +36,7 @@ const itemsTableBody = document.getElementById('itemsTableBody');
             {
                 method:'POST',
                 headers: {
-                    'Content-type':'application/json',
+                    'Content-Type':'application/json',
                 },
                 body: JSON.stringify(data)
             }
@@ -135,7 +135,7 @@ const itemsTableBody = document.getElementById('itemsTableBody');
             {
                 method: 'PUT',
                 headers:{
-                    'Content-type':'application/json',
+                    'Content-Type':'application/json',
                 },
                 body: JSON.stringify(data)
             })
