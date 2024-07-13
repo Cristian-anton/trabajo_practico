@@ -156,7 +156,7 @@ function handleDelete($conn){
     $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
     if($id>0){
         $stmt = $conn->prepare('DELETE FROM peliculas WHERE id = ?');
-        $stmt->execute($id);
+        $stmt->execute([$id]);
         echo json_encode(['message'=>'pelicula eliminada con exito']);
     }else{
         echo json_encode(['mesaage'=>'ID no proporcionado']);
