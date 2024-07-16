@@ -5,47 +5,56 @@ header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Type");
 
 include 'db.php';
-include 'peliculas.php';
+include 'Peliculas.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-switch ($method){
-    case "GET": handleGet($conn);
-                break;
-    case "POST": handlePost($conn);
-                break;
-    case "PUT": handlePut($conn);
-                break;
-    case "DELETE": handleDelete($conn);
-                break;
-    default: json_encode(['message'=>'metodo no permitido']);
-    break;
+switch ($method) {
+    case 'GET':
+        handleGet($conn);
+        break;
+    case 'POST':
+        handlePost($conn);
+        break;
+    case 'PUT':
+        handlePut($conn);
+        break;
+    case 'DELETE':        
+        handleDelete($conn);
+        break;
+    default:
+        echo json_encode(['message' => 'Método no permitido']);
+        break;
 }
 
 //funcion para traer peliculas
-function handleGet($conn){
+function handleGet($conn) 
+{
     $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-    if($id > 0){
+    if ($id > 0) 
+    {
         $stmt = $conn->prepare("SELECT * FROM peliculas WHERE id = ?");
         $stmt->execute([$id]);
         $pelicula = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if($pelicula){
+        if ($pelicula) 
+        {
             $peliculaObj = Peliculas::fromArray($pelicula);
             echo json_encode($peliculaObj->toArray());
-        }
-        else{
+        } 
+        else 
+        {
             http_response_code(404);
-            echo json_encode(['message'=>'No se encontradron datos']);
+            echo json_encode(['message' => 'No se encontraron datos']);
         }
-    }
-    else{
+    } 
+    else 
+    {
         $stmt = $conn->query("SELECT * FROM peliculas");
         $peliculas = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $peliculaObjs = array_map(fn($pelicula) => Peliculas::fromArray($pelicula)->toArray(), $peliculas);
         echo json_encode(['peliculas' => $peliculaObjs]);
-
     }
 }
 

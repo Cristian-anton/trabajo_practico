@@ -62,10 +62,15 @@ const itemsTableBody = document.getElementById('itemsTableBody');
     
     
     
-    const loadItems = (()=>{
+    const loadItems = ()=>{
 
         fetch('http://localhost/trabajo_practico/api/api.php')
-        .then(response => response.json())
+        .then(response => {
+            if(!response.ok){
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             itemsTableBody.innerHTML = '';
             if (data.peliculas) 
@@ -90,7 +95,7 @@ const itemsTableBody = document.getElementById('itemsTableBody');
                             ${pelicula.id},
                             '${pelicula.titulo}',
                             '${pelicula.año}',
-                            '${pelicula.genero},
+                            '${pelicula.genero}',
                             '${pelicula.director}',
                             '${pelicula.reparto}',
                             '${pelicula.detalles}',
@@ -108,7 +113,7 @@ const itemsTableBody = document.getElementById('itemsTableBody');
             })
             .catch(error => console.error('Error:', error));
         
-    })
+    }
 
 
 
